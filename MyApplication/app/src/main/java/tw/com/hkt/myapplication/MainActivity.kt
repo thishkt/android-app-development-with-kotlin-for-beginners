@@ -9,6 +9,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    companion object {
+        const val DATA_KEY = "data_key"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -17,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnNext.setOnClickListener{
             val inputData = binding.etInputData.text.toString()
             val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("data_key", inputData)
+            intent.putExtra(DATA_KEY, inputData)
             startActivity(intent)
         }
     }

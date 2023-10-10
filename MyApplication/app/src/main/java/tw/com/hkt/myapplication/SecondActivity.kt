@@ -13,7 +13,7 @@ class SecondActivity : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val inputData = intent.getStringExtra("data_key")
+        val inputData = intent.getStringExtra(MainActivity.DATA_KEY)
         binding.tvShowData.text = inputData
 
         binding.btnBack.setOnClickListener{
