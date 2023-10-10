@@ -6,30 +6,25 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SecondActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="第一個頁面"
         android:textSize="50dp"
         android:layout_marginBottom="20dp"
-        />
-
-    <TextView
-        android:id="@+id/tv_show_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_marginBottom="20dp"
-        android:textSize="40dp"
-        />
+        android:text="第二個頁面" />
+
+    <EditText
+        android:id="@+id/et_input_data"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_next"
+        android:textSize="40dp"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="跳轉"
-        android:textSize="40dp" />
+        android:text="返回" />
 
 </LinearLayout>
