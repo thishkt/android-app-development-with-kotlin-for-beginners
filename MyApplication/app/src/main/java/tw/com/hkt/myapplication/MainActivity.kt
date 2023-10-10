@@ -16,9 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnNext.setOnClickListener{
             val inputData = binding.etInputData.text.toString()
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("data_key", inputData)
-            startActivity(intent)
+//            val intent = Intent(this, SecondActivity::class.java)
+//            intent.putExtra("data_key", inputData)
+//            startActivity(intent) // 開始跳轉到 SecondActivity
+
+            SecondActivity.startWithData(this,inputData)
         }
     }
 }
