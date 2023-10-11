@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 
@@ -24,6 +25,13 @@ class MainActivity : AppCompatActivity(),SampleItemAdapter.OnItemClickListener {
         val adapter = SampleItemAdapter(items)
         adapter.setOnItemClickListener(this)
         recyclerView.adapter = adapter
+
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this@MainActivity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     // 生成假資料的函數
