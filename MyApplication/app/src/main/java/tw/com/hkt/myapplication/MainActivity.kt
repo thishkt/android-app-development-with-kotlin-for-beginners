@@ -1,5 +1,6 @@
 package tw.com.hkt.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity(),SampleItemAdapter.OnItemClickListener {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         val adapter = SampleItemAdapter(items)
         adapter.setOnItemClickListener(this)
         recyclerView.adapter = adapter
@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity(),SampleItemAdapter.OnItemClickListener {
 
 
     override fun onItemClick(item: SampleItem) {
-        val toastText = "標題: ${item.title}\n內容: ${item.description}"
-        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("title", item.title)
+        intent.putExtra("content", item.description)
+        startActivity(intent)
     }
 }
