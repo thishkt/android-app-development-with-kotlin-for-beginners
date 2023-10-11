@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 
@@ -20,10 +21,13 @@ class MainActivity : AppCompatActivity(),SampleItemAdapter.OnItemClickListener {
         val items = generateFakeData(100) // 生成一百筆假資料
 
         val recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val gridLayoutManager = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = gridLayoutManager
         val adapter = SampleItemAdapter(items)
         adapter.setOnItemClickListener(this)
         recyclerView.adapter = adapter
+
+
     }
 
     // 生成假資料的函數
