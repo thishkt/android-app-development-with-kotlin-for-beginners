@@ -2,12 +2,14 @@ package tw.com.hkt.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),SampleItemAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = SampleItemAdapter(items)
+
+        val adapter = SampleItemAdapter(items)
+        adapter.setOnItemClickListener(this)
+        recyclerView.adapter = adapter
     }
 
     // 生成假資料的函數
@@ -28,5 +33,11 @@ class MainActivity : AppCompatActivity() {
             fakeData.add(SampleItem("項目 $i", "這是項目 $i 的描述"))
         }
         return fakeData
+    }
+
+
+    override fun onItemClick(item: SampleItem) {
+        val toastText = "標題: ${item.title}\n內容: ${item.description}"
+        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show()
     }
 }
