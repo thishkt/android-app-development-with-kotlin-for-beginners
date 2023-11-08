@@ -4,13 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:gravity="center">
 
  <androidx.fragment.app.FragmentContainerView
      android:id="@+id/demoFragment"
      android:name="tw.com.hkt.myapplication.DemoFragment"
-     android:layout_width="wrap_content"
+     android:layout_width="match_parent"
      android:layout_height="wrap_content"
      tools:layout="@layout/fragment_demo" />
 
+ <TextView
+     android:id="@+id/tvResult"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:gravity="center"
+     android:padding="20dp"
+     android:textSize="30dp"
+     tools:text="顯示結果"
+     android:text="顯示結果"/>
 </LinearLayout>
