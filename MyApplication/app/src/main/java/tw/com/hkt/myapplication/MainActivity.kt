@@ -5,14 +5,21 @@ import android.os.Bundle
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        val demoFragment = DemoFragment().apply {
+            arguments = Bundle().apply {
+                putString("name", "John")
+                putInt("age", 25)
+            }
+        }
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.demoFragment, demoFragment)
+            .commit()
 
     }
 }
