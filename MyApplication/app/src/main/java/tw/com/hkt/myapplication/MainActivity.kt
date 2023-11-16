@@ -7,6 +7,8 @@ import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 import java.io.IOException
 
@@ -45,7 +47,22 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: okhttp3.Call, response: Response) {
                 val json = response.body?.string()
                 Log.d("HKT", "$json")
+                
+                printData(json)
             }
         })
+    }
+
+    private fun printData(json: String?) {
+
+        val postArray = JSONArray(json)
+
+        for (i in 0 until postArray.length()) {
+            val post = postArray.getJSONObject(i)
+            Log.d("HKT","userId: ${post.getInt("userId")}")
+            Log.d("HKT","id: ${post.getInt("id")}")
+            Log.d("HKT","title: ${post.getString("title")}")
+            Log.d("HKT","body: ${post.getString("body")}")
+        }
     }
 }
