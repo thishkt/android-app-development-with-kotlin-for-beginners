@@ -3,12 +3,11 @@ package tw.com.hkt.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.gson.Gson
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import org.json.JSONArray
-import org.json.JSONObject
 import tw.com.hkt.myapplication.databinding.ActivityMainBinding
 import java.io.IOException
 
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: okhttp3.Call, response: Response) {
                 val json = response.body?.string()
                 Log.d("HKT", "$json")
-                
+
                 printData(json)
             }
         })
@@ -55,14 +54,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun printData(json: String?) {
 
-        val postArray = JSONArray(json)
+        // 將 JSON 字串轉換成 Post 類別的陣列
+        val postArray = Gson().fromJson(json, Array<Post>::class.java)
 
-        for (i in 0 until postArray.length()) {
-            val post = postArray.getJSONObject(i)
-            Log.d("HKT","userId: ${post.getInt("userId")}")
-            Log.d("HKT","id: ${post.getInt("id")}")
-            Log.d("HKT","title: ${post.getString("title")}")
-            Log.d("HKT","body: ${post.getString("body")}")
+        // 遍歷陣列，印出每個 Post 的資訊
+        for (post in postArray) {
+            Log.d("HKT", "userId: ${post.userId}")
+            Log.d("HKT", "id: ${post.id}")
+            Log.d("HKT", "title: ${post.title}")
+            Log.d("HKT", "body: ${post.body}")
         }
     }
 }
