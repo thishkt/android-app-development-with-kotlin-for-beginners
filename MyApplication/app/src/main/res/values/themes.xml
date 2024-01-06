@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#FF8E00</item>
+    </style>
 </resources>
